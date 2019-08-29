@@ -1,0 +1,6 @@
+<h1><%= @micropost.title %></h1>
+
+<%= @micropost.body %>
+
+<%= link_to "編集する", edit_micropost_path(@micropost) %>
+<%= link_to "削除する", micropost_path(@micropost), method: :delete, "data-confirm" => "本当に削除しますか？" %>

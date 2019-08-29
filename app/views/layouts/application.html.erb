@@ -10,9 +10,16 @@
   </head>
 
   <body>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "新規登録", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
+    <% if user_signed_in? %>
+      <%= link_to "MARK", root_path %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <p>ようこそ<%= current_user.name %>さん</p>
+    <% else %>
+      <%= link_to "MARK", root_path %>
+      <%= link_to "新規登録", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path %>
+      <p>ようこそゲストさん</p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

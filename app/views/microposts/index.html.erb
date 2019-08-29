@@ -1,0 +1,7 @@
+<h1>投稿一覧</h1>
+
+<% @microposts.each do |m| %>
+	<div class = "field">
+		<%= link_to m.title, micropost_path(m) %>
+	</div>
+<% end %>
