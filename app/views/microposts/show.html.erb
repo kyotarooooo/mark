@@ -2,5 +2,21 @@
 
 <%= @micropost.body %>
 
+<% if @micropost.liked_by?(current_user) %>
+	<li>
+		<%= link_to micropost_like_path(@micropost), method: :delete do %>
+	    	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+	    	<%= @micropost.likes.count %> いいね
+	    <% end %>
+	</li>
+<% else %>
+	<li>
+	    <%= link_to micropost_likes_path(@micropost), method: :post do %>
+	    	<i class="far fa-heart" aria-hidden="true"></i>
+	    	<%= @micropost.likes.count %> いいね
+	    <% end %>
+	</li>
+<% end %>
+
 <%= link_to "編集する", edit_micropost_path(@micropost) %>
 <%= link_to "削除する", micropost_path(@micropost), method: :delete, "data-confirm" => "本当に削除しますか？" %>
